@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/lemonmilk" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>App</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      min-height: 100vh;
+      font-family: "Lemon/Milk", sans-serif;
+      font-family: "Lemon/Milk light", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .main-wrp {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .brand-name>a>h1,
+    .brand-footer>a>h1 {
+      color: #b98e35;
+      font-size: 2rem;
+      text-shadow: 1px 1px 2px #1c1c1c;
+      letter-spacing: 2.5px;
+    }
+
+    .brand-name>a {
+      text-decoration: none;
+    }
+
+    .brand-name,
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo>img {
+      fill: white;
+      max-width: 70%;
+    }
+
+    .header {
+      display: flex;
+      padding: 7px 20px;
+      background: #301616;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .hamb-men {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding-left: 8px;
+    }
+
+    /* add custom css */
+    .pillars-font {
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .header-content {
+      display: flex;
+    }
+
+    /* add for applying membership */
+    .overlay-form {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #0000007f;
+      display: none;
+      animation: fade-in 600ms ease-in 0ms 1 normal forwards;
+      z-index: 5;
+    }
+
+    .membership-form {
+      border-style: solid;
+      border-color: white;
+      border-width: 10px;
+      width: 60%;
+      height: fit-content;
+      position: absolute;
+      z-index: 4;
+      left: 20%;
+      right: 0;
+      top: 3.5%;
+      animation: fade-in 500ms ease-in 0ms 1 normal forwards;
+    }
+
+    .close-btn1 {
+      content: "X";
+      top: -15px;
+      right: -15px;
+      color: white;
+      background-color: #000000;
+      width: 35px;
+      height: 30px;
+      border-radius: 10px;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: white;
+      border-width: 1.5px;
+      border-style: solid;
+      cursor: pointer;
+    }
+
+    .form-inner {
+      background-color: #414042;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1.8rem;
+      padding-bottom: 3rem;
+    }
+
+    .form-head {
+      flex-grow: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      letter-spacing: 3px;
+    }
+
+    .form-body {
+      flex-grow: 1;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .right-form,
+    .left-form,
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-form {
+      gap: 1.6rem;
+    }
+
+    .left-form {
+      border-right: 1px white solid;
+      padding-right: 15px;
+    }
+
+    .user-info {
+      gap: 1.5rem;
+    }
+
+    .form-name-inputs {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .form-text-inputs-all,
+    .form-text-inputs {
+      background: none;
+      border-top: none;
+      border-left: 0;
+      border-right: 0;
+      padding: 0px 5px 10px;
+      border-color: #c4967d;
+      border-width: 1px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-lbl,
+    .form-head,
+    .form-text-inputs-all,
+    .form-text-inputs {
+      color: #c4967d;
+    }
+
+    .res-left,
+    .res-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-residence {
+      display: flex;
+      gap: 1rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+    }
+
+    #select-media,
+    #select-hear {
+      background: #474648;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      font-weight: 600;
+      font-size: large;
+      color: #c4967d;
+      border-color: #c4967d;
+      padding: 6px 5px 8px;
+      text-transform: uppercase;
+    }
+
+    #no-reference {
+      color: #c4967d;
+      letter-spacing: 0.5px;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .more-info,
+    .form-hear {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .more-info>label,
+    .form-hear>label {
+      font-size: smaller;
+    }
+
+    #more-info-txt {
+      background: none;
+      border-color: #c4967d;
+      border-style: solid;
+      resize: none;
+      color: #c4967d;
+      padding: 0.2rem;
+    }
+
+
+    .form-footer {
+      width: 100%;
+    }
+
+    .submit-btn {
+      height: 35px;
+      width: 250px;
+      background: #017481;
+      background-image: linear-gradient(to right, #eab69a, #b48972);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 5px;
+    }
+
+    .fade-out-cl {
+      animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
+    }
+
+    .thanks {
+      width: 50vw;
+      height: 100%;
+      text-align: center;
+      font-size: 3.5rem;
+      color: white;
+      background-image: linear-gradient(to right, #eab69a, #b48972);
+      font-weight: 600;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      animation: fade-in 2000ms ease-in 0ms 1 normal forwards;
+    }
+
+    @media only screen and (max-width: 824px) {
+      .header {
+        padding: 20px;
+        position: relative;
+      }
+
+      .banner {
+        padding: 50px 0px;
+      }
+
+      .banner-text {
+        margin: auto;
+        padding: 19px;
+      }
+
+      .perks {
+        padding: 40px;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .mem-text,
+      .more-perks {
+        padding: 50px;
+      }
+
+      .perks-cont,
+      .footer-cont,
+      .container {
+        flex-direction: column;
+      }
+
+      .left-footer {
+        text-align: center;
+      }
+
+      .perks-txt {
+        padding: 2px 20px;
+      }
+
+      .footer-cont {
+        padding: 20px;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .logo {
+        display: none;
+      }
+
+      .info-cont {
+        padding: 5px;
+      }
+
+      .info-cont>h3 {
+        font-size: 1.5rem;
+      }
+
+      .info-cont>p {
+        font-size: 0.8rem;
+      }
+
+
+      .form-residence {
+        gap: 1.5rem;
+        flex-direction: column;
+      }
+
+      .left-form {
+        border-right: 0;
+      }
+
+      .overlay-form {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .form-body,
+      .form-name-inputs {
+        flex-direction: column;
+      }
+
+      .membership-form {
+        width: 100%;
+        left: 0;
+        height: 100%;
+      }
+
+      .left-footer {
+        text-align: center;
+      }
+
+      .form-inner {
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+
+
+      .form-body {
+        flex-direction: column;
+
+      }
+
+    }
+
+
+    #sidebar {
+      position: absolute;
+      right: -300px;
+      height: 100vh;
+      top: 80px;
+      background: rgba(0, 0, 0, 0.7);
+      width: 200px;
+      white-space: nowrap;
+    }
+
+    .open {
+      transform: translateX(-300px);
+      transition: all 0.7s ease-in-out;
+    }
+
+    .side-menu-links {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin-top: 20px;
+      gap: 1.2rem;
+      height: 100%;
+      align-items: flex-end;
+      position: relative;
+      padding: 0;
+    }
+
+    .social-m {
+      list-style: none;
+      padding: 0;
+    }
+
+    .side-menu-links>li {
+      padding: 0px 1.4rem 0px 1rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    ul.side-menu-links>li>a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: all 120ms ease-in-out;
+      color: #f1c232;
+    }
+
+    .side-menu-links>li>a:hover {
+      color: white;
+      transition: all 120ms ease-in-out;
+    }
+
+    .footer {
+      background: white;
+      color: #301616;
+    }
+
+    .footer-cont {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-footer>a {
+      text-decoration: none;
+    }
+
+    .left-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: .8em;
+      letter-spacing: 1px;
+      text-align: right;
+    }
+
+    .membership {
+      background-image: linear-gradient(to right, #301616, #4e2019);
+      padding: 2rem 4rem;
+    }
+
+    .memberForm {
+      text-align: center;
+      text-decoration: none;
+      color: #b98e35;
+    }
+
+    .reqbtn {
+      background-color: black;
+      width: fit-content;
+      margin: auto;
+      padding: 7px 18px;
+      border-radius: 18px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .membership-info {
+      position: absolute;
+      background-image: linear-gradient(to right,
+          rgba(234, 182, 154, 0.95),
+          rgba(182, 139, 115, 0.95));
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      display: none;
+      animation: fade-in 300ms ease-in 0ms 1 normal forwards;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .social-m>li>a {
+      text-decoration: none;
+      color: #b38972db;
+      font-size: 1.5rem;
+      display: block;
+    }
+
+    .social-m {
+      display: flex;
+      margin: auto;
+      margin-top: auto;
+      list-style: none;
+      width: 100%;
+      justify-content: space-around;
+      margin-top: 55vh;
+    }
+
+    .fade-out-cl {
+      animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+
+    .heading {
+      width: 100%;
+      padding: 0 80px;
+      background-color: #bba94a;
+    }
+
+
+
+    .heading-cont {
+      color: black;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      padding: 20px 0px;
+    }
+
+    .gallery {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 100px;
+      padding: 15px 150px;
+      margin: 20px auto;
+      min-height: 100vh;
+    }
+
+    #gallery>.col-12>img {
+      height: 25vh;
+      cursor: pointer;
+    }
+
+    .tip-dbclick {
+      top: 1px;
+      position: absolute;
+      color: white;
+      z-index: 5;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px;
+      background: #bba94a;
+      letter-spacing: 0.8px;
+      font-size: smaller;
+      border-radius: 5px;
+      display: none;
+      transition: all ease-out 500ms;
+
+    }
+
+    .tip-ap {
+      animation: tipAn 800ms ease-in-out 0ms 1 normal forwards;
+    }
+
+    #ev-1-row>.col-12>img {
+      height: 250px;
+      cursor: pointer;
+    }
+
+    .accordion-button {
+      background-color: transparent !important;
+      color: black !important;
+    }
+
+    .carousel-item>img {
+      max-height: 95vh;
+    }
+
+    @keyframes tipAn {
+      0% {
+        opacity: 0
+      }
+
+      ;
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .gallery-cont {
+      width: 80%;
+      margin: 10px auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .gallery-cont .buttons {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      top: 73.5%;
+      font-size: 3em;
+      font-weight: bold;
+      padding: 0px 8px;
+      width: 100%;
+    }
+
+
+
+
+    .gallery-cont a {
+      text-decoration: none;
+      color: black;
+      z-index: 4;
+      background-color: #d7a88d8a;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: all .2s;
+    }
+
+    .gallery-cont a:hover {
+      color: #e0e0e0;
+      background-color: #a3826f;
+      transition: all .2s;
+    }
+
+    .gallery-cont .photos {
+      position: relative;
+      height: 400px;
+    }
+
+    .gallery-cont .block {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      z-index: -22;
+      transition: opacity 1s;
+    }
+
+    .block-desc {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: white;
+      height: 30%;
+      align-items: flex-start;
+      padding: 10px 70px;
+      background-color: #000000a6;
+      justify-content: center;
+      text-align: left;
+
+    }
+
+    .block-desc>span {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .gallery-cont .block.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .block-1 {
+      background-image: url('https://images.unsplash.com/photo-1581091870598-36ce9bad5c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTQ5NjE0MDA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+    }
+
+    .block-2 {
+      background-image: url('https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTQ5NjE0MDY&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+    }
+
+    .block-3 {
+      background-image: url('https://images.unsplash.com/photo-1642522029691-029b5a432954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTQ5NjE0MTI&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+    }
+
+    .block-4 {
+      background-image: url('https://images.unsplash.com/photo-1525130413817-d45c1d127c42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTQ5NjE0MTU&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+    }
+
+    .images-overflow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000000d9;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+      animation: fade-in 500ms ease-in 0ms 1 normal forwards;
+    }
+
+    .close-btn {
+      position: absolute;
+
+      color: white;
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 12%;
+      right: 12%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .ev-1-gallery-cont,
+    .ev-2-gallery-cont,
+    .ev-3-gallery-cont,
+    .ev-4-gallery-cont {
+      position: absolute;
+      top: 15px;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      padding: 5rem 8rem;
+      display: none;
+    }
+
+    .big-photos {
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+
+    .big-ev-block {
+      opacity: 0;
+      /* ????*/
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80%;
+      overflow: hidden;
+      right: 0;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      transition: opacity 1s;
+      border-color: #d7a88d;
+      border-width: 4px;
+      border-style: solid;
+    }
+
+    .big-ev-block>img {
+      width: 80vw;
+      height: 80vh;
+      object-fit: cover;
+    }
+
+    .big-ev-block.active {
+      opacity: 1;
+    }
+
+    .exp-buttons {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      right: 0;
+      padding: 0px 65px;
+    }
+
+    .next-big,
+    .prev-big {
+      font-size: 5rem;
+      text-decoration: none;
+      color: black;
+      background-color: #d7a88d;
+      padding: 1rem;
+      border-radius: .5rem;
+      transition: all .2s;
+    }
+
+    .next-big:hover,
+    .prev-big:hover {
+      color: #e0e0e0;
+      background-color: #8a6f5f;
+      transition: all .2s;
+    }
+
+    /*Mobile Query*/
+    @media only screen and (max-width: 824px) {
+      .header {
+        padding: 20px;
+        position: relative;
+      }
+
+      .heading {
+        padding-top: 0;
+      }
+
+      .app-ban-head {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        width: 100%;
+      }
+
+      .banner {
+        padding: 50px 0px;
+      }
+
+      .banner-text {
+        margin: auto;
+        padding: 19px;
+      }
+
+      .container {
+        display: flex;
+      }
+
+
+      .gallery {
+        padding: 0;
+      }
+
+      .gallery-cont {
+        width: 100%;
+        margin: 0;
+      }
+
+      .gallery-cont>.buttons {
+        width: 95%;
+        left: 1%;
+        bottom: 5%;
+      }
+
+      .exp-buttons {
+        top: 42%;
+        padding: 0px 2px;
+      }
+
+      .next-big,
+      .prev-big {
+        font-size: 2rem;
+      }
+
+      .block-desc {
+        height: auto;
+      }
+
+      .big-ev-block {
+        top: 10%;
+      }
+
+      .ev-1-gallery-cont,
+      .ev-2-gallery-cont,
+      .ev-3-gallery-cont,
+      .ev-4-gallery-cont {
+        padding: 0;
+      }
+
+      .footer-cont {
+        flex-direction: column;
+      }
+
+      .left-footer {
+        text-align: center;
+      }
+
+      .footer-cont {
+        padding: 20px;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .logo {
+        display: none;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-wrp">
+    <div class="overlay-form">
+      <div class="membership-form">
+        <div class="close-btn1" onclick="closeForm()">
+          X
+        </div>
+        <div class="form-inner">
+          <div class="form-head">
+            <span>Membership Enquiry</span>
+          </div>
+          <div class="form-body">
+            <div class="left-form">
+              <div class="user-info">
+                <label for="user-info" class="form-lbl">TELL US A LITTLE BIT ABOUT YOURSELF</label>
+                <div class="form-name-inputs">
+                  <input class="form-text-inputs" placeholder="FIRST NAME" type="text" id="first-name" />
+                  <input class="form-text-inputs" placeholder="SURNAME" type="text" id="surname" />
+                </div>
+                <input class="form-text-inputs-all" placeholder="AGE" type="text" id="age" />
+                <input class="form-text-inputs-all" placeholder="EMAIL" type="text" id="email" />
+                <input class="form-text-inputs-all" placeholder="PHONE NUMBER" type="text" id="phone" />
+                <input class="form-text-inputs-all" placeholder="INDUSTRY" type="text" id="industry" />
+                <input class="form-text-inputs-all" placeholder="COMPANY" type="text" id="company" />
+                <div class="form-residence">
+                  <div class="res-left">
+                    <label for="res-left" class="form-lbl">WHERE DO YOU LIVE</label>
+                    <input class="form-text-inputs-all" placeholder="CITY" type="text" id="live-city" />
+                  </div>
+                  <div class="res-right">
+                    <label for="res-right" class="form-lbl">PLACE OF WORK</label>
+                    <input class="form-text-inputs-all" placeholder="CITY" type="text" id="work-city" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="right-form">
+              <label class="form-lbl">PLEASE PROVIDE REFERENCE OF ATLEAST ONE QUORUM MEMBER</label>
+              <input class="form-text-inputs-all" placeholder="REFERENCE 1" type="text" id="reference-1" />
+              <input class="form-text-inputs-all" placeholder="REFERENCE 2" type="text" id="reference-2" />
+              <label id="no-reference"><input type="checkbox" id="did-not-had-ref" />I don’t know
+                any member</label>
+              <div class="more-info">
+                <label for="more-info" class="form-lbl">Something we should know about you</label>
+                <textarea id="more-info-txt" cols="10" rows="5"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-footer">
+            <div class="submit-btn" onclick="sendApplication()">Submit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <div class="logo">
+        <a href="/index.html">
+          <img src="img/logos/ws.png" style="width:64px;" class="icon">
+        </a>
+      </div>
+      <div class="header-content">
+        <div class="brand-name">
+          <a href="#">
+            <h1>HYDERABAD CRICKET CLUB</h1>
+          </a>
+        </div>
+        <div class="hamb-men">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="40.75px" height="32.5px" viewBox="0 0 40.75 32.5"
+            enable-background="new 0 0 40.75 32.5" xml:space="preserve">
+            <g>
+              <rect x="6.407" y="7.774" fill="#FFFFFF" width="27.061" height="1.792" />
+              <rect x="6.407" y="16.199" fill="#FFFFFF" width="27.061" height="1.793" />
+              <rect x="6.407" y="24.625" fill="#FFFFFF" width="27.061" height="1.793" />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <nav id="sidebar">
+        <ul class="side-menu-links">
+          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/about.html">About US</a></li>
+          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/benefits.html">Benefits</a></li>
+          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/gallery.html">Gallery</a></li>
+          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/app.html">App</a></li>
+          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/contact.html">Contact US</a></li>
+          <ul class="social-m">
+            <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+          </ul>
+        </ul>
+      </nav>
+    </div>
+    <section class="heading">
+      <div class="heading-cont">
+        <h1>Enjoy our events</h1>
+      </div>
+    </section>
+
+    <!--Modal 1 for the 1st picture - event 1-->
+    <!--See id="modal1"? This is the selector which should be used for new modals in the <script> tag. To create a new modal (the container which has sliding pics in it), copy the following div and change its id. Then create an instance in the <script> tag-->
+    <div class="modal fade" id="modal1" aria-hidden="true" tabindex="-1" aria-labelledby="exampleModal1">
+      <div class="modal-dialog modal-fullscreen-sm-down" style="min-width:100%;min-height:100%;">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!--Carousel gallery 1-->
+            <div id="carousel1" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+              <!--Carousel-inner is a container for images. To change them, just change the src attribute-->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://source.unsplash.com/cPF2nlWcMY4" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://pixabay.com/get/g27ded38703d3ce95bc8dfe52a4a59f560a2fe06d1f6e1dc3e8809cbf63afa726aa03153c0dc32ba94ac72667f9f8fe66_1280.jpg"
+                    class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://pixabay.com/get/g5cdb6afaf9cf97652a8dcb129909311c54c99eaf630b4dd31b0ab86b37337af5b0fa8f45298a515a81edb4c30ee4e527_1280.jpg"
+                    class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!--Carousel1 ends-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--Modal 1 ends-->
+
+    <!--Modal 2 for the 2nd picture - event 1-->
+    <div class="modal fade" id="modal2" aria-hidden="true" tabindex="-1" aria-labelledby="exampleModal2">
+      <div class="modal-dialog modal-fullscreen-sm-down" style="min-width:100%;min-height:100%;">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!--Carousel 2-->
+            <div id="carousel2" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://pixabay.com/get/g5003800eb8d83956030cdf33cad812271673882ed18f89f8dd4989848e7ba8275837f4d601ef1ef5885a05be61d4747e_1280.jpg"
+                    class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://pixabay.com/get/g27ded38703d3ce95bc8dfe52a4a59f560a2fe06d1f6e1dc3e8809cbf63afa726aa03153c0dc32ba94ac72667f9f8fe66_1280.jpg"
+                    class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://pixabay.com/get/g05eb963d1bd76645a384cbbec2b3928b1261c40cf29ac060823849eb24c547c047c27a8ede7aff6a1e4b392ed4db765d_1280.jpg"
+                    class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!--Carousel2 ends-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--Modal 2 ends-->
+
+    <!--Modal x (say, 6) for the other row... You get the idea I hope-->
+    <div class="modal fade" id="modal6" aria-hidden="true" tabindex="-1" aria-labelledby="exampleModal6">
+      <div class="modal-dialog modal-fullscreen-sm-down" style="min-width:100%;min-height:100%;">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!--Carousel gallery 1-->
+            <div id="carousel6" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+              <!--Carousel-inner is a container for images. To change them, just change the src attribute-->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://images.unsplash.com/photo-1652952116747-ecdcabb667de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1NTA1MjAzNg&ixlib=rb-1.2.1&q=80&w=1080"
+                    class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1654881710580-ac11d4c3ecba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1NTA1MjA2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+                    class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1653844572321-34fec84530a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1NTA1MjA4OQ&ixlib=rb-1.2.1&q=80&w=1080g"
+                    class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel6" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel6" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!--Carousel1 ends-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--Gallery container-->
+    <section class="gallery">
+      <div class="container h-100">
+        <!--Accordion dropdown for event-->
+        <div class="accordion" id="accordion-gal">
+          <!--Accordion item number 1 (event 1)-->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="event-1-heading">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                Event Name 1
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse-show" data-bs-parent="#accordionGal">
+              <div class="accordion-body">
+
+                <div class="row" id="ev-1-row">
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="#modal1" onclick="Modal1.show()"
+                      src="https://pixabay.com/get/g7b3ba2aa66f085b7b2e6633cffb441322c81318db2d10305b6f500cfc19982f325338cd52257d03bcb6eccca4e6cd13f_1280.jpg">
+                  </div>
+
+
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="#modal2" onclick="Modal2.show()"
+                      src="https://images.ctfassets.net/hrltx12pl8hq/4f6DfV5DbqaQUSw0uo0mWi/6fbcf889bdef65c5b92ffee86b13fc44/shutterstock_376532611.jpg?fit=fill&w=800&h=300">
+                  </div>
+
+
+
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="CHANGE_TO_NEW_SELECTOR(E.G #modal2/3/5)"
+                      onlick="YOUR_MODAL_NUM.show()"
+                      src="https://images.unsplash.com/photo-1653398597696-e6bfdb901ee8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1NTAyNTMxNQ&ixlib=rb-1.2.1&q=80&w=1080">
+                  </div>
+
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="CHANGE_TO_NEW_SELECTOR(E.G #modal2/3/5)"
+                      onlick="YOUR_MODAL_NUM.show()"
+                      src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!--Accordion item number 1 ends-->
+
+          <!--Accordion item number 2 (event 2)-->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="event-2-heading">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo">
+                Event Name 2
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionGal">
+              <div class="accordion-body">
+                <div class="row" id="ev-1-row">
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <!--Data target attribute serves as a pointer to the corresponding modal. Don't forget to add # symbol after creating a new item with a modal!-->
+                    <img class="w-100" data-toggle="modal" data-target="#modal6" onclick="Modal6.show()"
+                      src="https://images.unsplash.com/photo-1616531770192-6eaea74c2456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTUwNTE4NDY&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080">
+                  </div>
+
+
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="CHANGE_TO_NEW_SELECTOR(E.G #modal2/3/5)"
+                      onlick="YOUR_MODAL_NUM.show()"
+                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTUwNTE4Njg&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080">
+                  </div>
+
+
+
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="CHANGE_TO_NEW_SELECTOR(E.G #modal2/3/5)"
+                      onlick="YOUR_MODAL_NUM.show()"
+                      src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWVldGluZ3x8fHx8fDE2NTUwNTE5MDc&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080">
+                  </div>
+
+
+
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" data-toggle="modal" data-target="CHANGE_TO_NEW_SELECTOR(E.G #modal2/3/5)"
+                      onlick="YOUR_MODAL_NUM.show()"
+                      src="https://images.unsplash.com/photo-1653704552419-c0d3f741282d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1NTA1MTkzMQ&ixlib=rb-1.2.1&q=80&w=1080">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Accordion item number 2 ends-->
+        </div>
+        <!--Accordion dropdown ends-->
+      </div>
+    </section>
+    <section class="membership">
+      <div class="reqbtn" onclick="membershipFormOpen()">
+        <a class="memberForm">
+          <div class="request">Appy For MEMBERSHIP</div>
+        </a>
+      </div>
+    </section>
+    <div class="footer">
+      <div class="footer-cont">
+        <div class="brand-footer">
+          <a href="#">
+            <img src="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/img/logos/hcc-logo-nobg.png"
+              style="width:70px;" class="icon">
+          </a>
+        </div>
+        <div class="left-footer">
+          <p>
+            Headquarters: 3rd Floor, Vamsiram Jyothi Celeste, CBI Colony,
+            <br />
+            Kavuri Hills, Jubilee Hills, Hyderabad - 500033.
+          </p>
+          <span>Hyderabad Cricket Club © 2022. A Venture of Wattey Shot Pvt Ltd. All Rights Reserved.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    //Creating instances of modals and selecting each of them with their ids (e.g. #modal1 is id="modal1" in HTML)
+    let Modal1 = new bootstrap.Modal(document.getElementById("modal1"), {});
+    let Modal2 = new bootstrap.Modal(document.getElementById("modal2"), {});
+    let Modal6 = new bootstrap.Modal(document.getElementById("modal6"), {});
+
+    let closeOvf = document.querySelector('.close-btn');
+
+
+
+    let menBtn = document.querySelector('.hamb-men');
+
+    menBtn.addEventListener('click', () => {
+      let sideBar = document.getElementById('sidebar')
+      if (!document.querySelector('.open')) {
+        sideBar.classList.add('open');
+      } else {
+        sideBar.style.transform = 'translate(300px,0)'
+        setTimeout(() => {
+          sideBar.style.transform = '';
+          sideBar.classList.remove('open');
+
+        }, 700)
+
+      }
+    })
+
+    const stanMem = document.getElementById("mem-standard");
+    const expMem = document.getElementById("mem-expatriate");
+    const un35Mem = document.getElementById("mem-under-35");
+    const un30Mem = document.getElementById("mem-under-30");
+    const ncrMem = document.getElementById("mem-non-ncr");
+    const corpMem = document.getElementById("mem-corporate");
+
+    const openModal = (modal) => {
+      switch (modal) {
+        case "stand":
+          stanMem.style.display = "flex";
+          break;
+        case "exp":
+          expMem.style.display = "flex";
+          break;
+        case "un35":
+          un35Mem.style.display = "flex";
+          break;
+        case "un30":
+          un30Mem.style.display = "flex";
+          break;
+        case "ncr":
+          ncrMem.style.display = "flex";
+          break;
+        case "corp":
+          corpMem.style.display = "flex";
+          break;
+      }
+    };
+
+    document.querySelectorAll(".close-info").forEach((el) => {
+      el.addEventListener("click", () => {
+        el.parentElement.style.display = "none";
+      });
+    });
+
+    const membershipFormOpen = () => {
+      let bodyScroll = document.querySelector("body");
+      let overflowEl = document.querySelector(".overlay-form");
+      overflowEl.style.display = "block";
+      bodyScroll.style.position = "relative";
+    };
+
+    document.querySelector(".close-btn1").addEventListener("click", () => {
+      let formEl = document.querySelector(".membership-form");
+      formEl.classList.add("fade-out-cl");
+      document.querySelector("body").style.position = "relative";
+      setTimeout(function () {
+        formEl.classList.remove("fade-out-cl");
+        formEl.parentElement.style.display = "none";
+      }, 800);
+    });
+
+    const closeForm = () => { };
+
+    const sendApplication = () => {
+      let jsonObj = JSON.stringify({
+        firstName: document.getElementById("first-name").value,
+        surName: document.getElementById("surname").value,
+        age: document.getElementById("age").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        industry: document.getElementById("industry").value,
+        company: document.getElementById("company").value,
+        residence: document.getElementById("live-city").value,
+        workCity: document.getElementById("work-city").value,
+        ref1: document.getElementById("reference-1").value,
+        ref2: document.getElementById("reference-2").value,
+        noRef: document.getElementById("did-not-had-ref").checked,
+        moreInfo: document.getElementById("more-info-txt").value,
+      });
+
+      let handlerScript = "http://domain.com/mailscript.php";
+      let reqOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonObj,
+      };
+      const sendD = async (url, opts) => {
+        let resPo = await fetch(url, opts);
+      };
+      sendD(handlerScript, reqOptions);
+
+      let thankMem = document.createElement("div");
+      let form = document.querySelector(".membership-form");
+      thankMem.innerHTML =
+        "Thank you for sending your membership application.";
+      thankMem.style.zIndex = "3";
+      thankMem.classList.add("thanks");
+      form.appendChild(thankMem);
+
+      setTimeout(function () {
+        form.classList.add("fade-out-cl");
+        document.querySelector("body").style.position = "relative";
+        form.classList.remove("fade-out-cl");
+        thankMem.classList.remove("thanks");
+        form.parentElement.style.display = "none";
+      }, 2800);
+    };
+
+//Expanding functionality
+
+
+  </script>
+</body>
+
+</html>
