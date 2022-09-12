@@ -1,0 +1,255 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/lemonmilk">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>WatteyShot</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: "Lemon/Milk", sans-serif;
+        font-family: "Lemon/Milk light", sans-serif;
+      }
+      .full-wrp {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        position: relative;
+      }
+      .full-wrp::before {
+    content: '';
+    width: 1%;
+    position: absolute;
+    height: 84vh;
+    background: #000000cf;
+    left: 49.5%;
+    z-index: 2;
+    bottom: 0;
+}
+.logo-text-wrp {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 55% 35%;
+  justify-items: center;
+    row-gap: 10px;
+}
+.logo {
+  width: max-content;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all ease-in-out 0.2s;
+  height: fit-content;
+  align-self: end;
+  border-radius: 50%;
+}
+
+      .icon {
+        fill: #ffff;
+        stroke: #f3f3f3;
+        transition: all 0.5s ease;
+
+      }
+
+      .logo:hover .icon {
+        fill: rgba(207, 178, 16, 0.807);
+      }
+
+      /*.logo:hover {
+        border-style: solid;
+        border-color: rgba(207, 178, 16, 0.807);
+      }
+
+      .logo:hover .city-name {
+        color: rgba(207, 178, 16, 0.807);
+      } */
+
+      .left-wrap {
+        background-image:url('img/bg/cricket1.jpg');
+      }
+
+      .left-wrap, .right-wrap {
+        gap: 20px;
+        width: 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 100%;
+      }
+
+      .city-name {
+  font-size: 2rem;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-shadow: 1px 1px 2px #1c1c1c;
+  transition: all ease-in-out 0.2s;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+      .center-caption {
+        padding: 60px;
+        position: absolute;
+        z-index: 2;
+        top: -85px;
+        height: 100%;
+        margin: auto;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: min-content;
+        display: flex;
+        align-items: start;
+      }
+
+
+      .right-wrap {
+        background-image: url('img/bg/coin.jpg');
+      }
+
+      .link-wrp {
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+        #left-hov, #right-hov {
+            width:180px;
+            position: absolute;
+            opacity:0;
+        }
+
+        #left-img, #left-hov, #right-hov {
+            transition: all 0.5s ease;
+        }
+
+        .link-wrp:hover #left-hov {
+            opacity: 1;
+        }
+
+        .link-wrp:hover #right-hov {
+            opacity: 1;
+        }
+
+
+      @media only screen and (max-width: 480px) {
+        .left-wrap,
+        .right-wrap {
+          width: 100%;
+        }
+        .center-caption {
+          width: 100%;
+          align-items: start;
+          justify-content: center;
+        }
+        .full-wrp {
+          flex-direction: column;
+        }
+        .full-wrp::before {
+          content:' ';
+          width: 0;
+        }
+
+        .logo-text-wrp {
+          display: flex;
+          flex-direction: column;
+          gap:15px;
+          align-items: center;
+          justify-content: center;
+        }
+        .logo {
+          align-self: unset;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full-wrp">
+      <div class="center-caption">
+        <div class="img-crop"><img src="img/logos/ws.png" style="width:100px;" class="icon"></div>
+
+      </div>
+      <div class="logo-text-wrp">
+          <div class="logo">
+            <a class="link-wrp" id="left-tar" href="http://hyderabadcricketclub.com/">
+              <img style="width:180px; opacity:1;" id="left-img" src="img/logos/hcc-logo-nobg.png" class="icon">
+              <img id="left-hov" src="img/logos/hcc-logo-nobg-hover.png">
+            </a>
+          </div>
+          <div class="logo">
+            <a class="link-wrp" id="right-tar" href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/lio/index.html">
+              <img style="width:180px;" id="right-img" src="img/logos/lio.png" class="icon">
+                <img id="right-hov" src="img/logos/lio-hover.png">
+            </a>
+          </div>
+
+          <div class="city-name" style="color: white;">Hyderabad <br />
+              Cricket Club</div>
+          <div class="city-name" style="color: white;">Leaders for India <br>
+            Organization</div>
+        </div>
+
+      <div class="left-wrap">
+
+
+      </div>
+      <div class="right-wrap">
+
+
+      </div>
+    </div>
+    <script>
+      const linkWraps = document.querySelectorAll('.link-wrp');
+        const txtS = document.querySelectorAll('.city-name');
+
+        linkWraps.forEach(el=>{
+           el.addEventListener('mouseenter', (e)=>{
+               if (e.target.id === 'left-tar') {
+                   txtS[0].style.color = 'rgb(203,164,33)';
+               } else {
+                   txtS[1].style.color = 'rgb(203,164,33)'
+               }
+           })
+
+            el.addEventListener('mouseleave',(e)=>{
+                if (e.target.id === 'left-tar') {
+                   txtS[0].style.color = 'white';
+               } else {
+                   txtS[1].style.color = 'white';
+               }
+            })
+
+        })
+
+
+      </script>
+
+
+</body></html>
