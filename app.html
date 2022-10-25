@@ -1,1111 +1,1111 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/lemonmilk" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/lemonmilk" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>App</title>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+    <title>App</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      width: 100vw;
-      min-height: 100vh;
-      font-family: "Lemon/Milk", sans-serif;
-      font-family: "Lemon/Milk light", sans-serif;
-      overflow-x: hidden;
-    }
-
-    .main-wrp {
-      width: 100%;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    .brand-name>a>h1,
-    .brand-footer>a>h1 {
-      color: #b98e35;
-      font-size: 2rem;
-      text-shadow: 1px 1px 2px #1c1c1c;
-      letter-spacing: 2.5px;
-    }
-
-    .brand-name>a {
-      text-decoration: none;
-    }
-
-    .brand-name,
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo>img {
-      fill: white;
-      max-width: 70%;
-    }
-
-    .header {
-      display: flex;
-      padding: 7px 20px;
-      background: #301616;
-      justify-content: space-between;
-      position: fixed;
-      width: 100%;
-      z-index: 2;
-    }
-
-    .hamb-men {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      padding-left: 8px;
-    }
-
-    /* add custom css */
-    .pillars-font {
-      font-family: 'Times New Roman', Times, serif;
-    }
-
-    .header-content {
-      display: flex;
-    }
-
-    /* add for applying membership */
-    .overlay-form {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #0000007f;
-      display: none;
-      animation: fade-in 600ms ease-in 0ms 1 normal forwards;
-      z-index: 5;
-    }
-
-    .membership-form {
-      border-style: solid;
-      border-color: white;
-      border-width: 10px;
-      width: 60%;
-      height: fit-content;
-      position: absolute;
-      z-index: 4;
-      left: 20%;
-      right: 0;
-      top: 3.5%;
-      animation: fade-in 500ms ease-in 0ms 1 normal forwards;
-    }
-
-    .close-btn1 {
-      content: "X";
-      top: -15px;
-      right: -15px;
-      color: white;
-      background-color: #000000;
-      width: 35px;
-      height: 30px;
-      border-radius: 10px;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: white;
-      border-width: 1.5px;
-      border-style: solid;
-      cursor: pointer;
-    }
-
-    .form-inner {
-      background-color: #414042;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      gap: 1.8rem;
-      padding-bottom: 3rem;
-    }
-
-    .form-head {
-      flex-grow: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.7rem;
-      letter-spacing: 3px;
-    }
-
-    .form-body {
-      flex-grow: 1;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .right-form,
-    .left-form,
-    .user-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .right-form {
-      gap: 1.6rem;
-    }
-
-    .left-form {
-      border-right: 1px white solid;
-      padding-right: 15px;
-    }
-
-    .user-info {
-      gap: 1.5rem;
-    }
-
-    .form-name-inputs {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .form-text-inputs-all,
-    .form-text-inputs {
-      background: none;
-      border-top: none;
-      border-left: 0;
-      border-right: 0;
-      padding: 0px 5px 10px;
-      border-color: #c4967d;
-      border-width: 1px;
-      letter-spacing: 0.5px;
-    }
-
-    .form-lbl,
-    .form-head,
-    .form-text-inputs-all,
-    .form-text-inputs {
-      color: #c4967d;
-    }
-
-    .res-left,
-    .res-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .form-residence {
-      display: flex;
-      gap: 1rem;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-    }
-
-    #select-media,
-    #select-hear {
-      background: #474648;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      font-weight: 600;
-      font-size: large;
-      color: #c4967d;
-      border-color: #c4967d;
-      padding: 6px 5px 8px;
-      text-transform: uppercase;
-    }
-
-    #no-reference {
-      color: #c4967d;
-      letter-spacing: 0.5px;
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .more-info,
-    .form-hear {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .more-info>label,
-    .form-hear>label {
-      font-size: smaller;
-    }
-
-    #more-info-txt {
-      background: none;
-      border-color: #c4967d;
-      border-style: solid;
-      resize: none;
-      color: #c4967d;
-      padding: 0.2rem;
-    }
-
-
-    .form-footer {
-      width: 100%;
-    }
-
-    .submit-btn {
-      height: 35px;
-      width: 250px;
-      background: #017481;
-      background-image: linear-gradient(to right, #eab69a, #b48972);
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50px;
-      cursor: pointer;
-      letter-spacing: 5px;
-    }
-
-    .fade-out-cl {
-      animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
-    }
-
-    .thanks {
-      width: 50vw;
-      height: 100%;
-      text-align: center;
-      font-size: 3.5rem;
-      color: white;
-      background-image: linear-gradient(to right, #eab69a, #b48972);
-      font-weight: 600;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      animation: fade-in 2000ms ease-in 0ms 1 normal forwards;
-    }
-
-    @media only screen and (max-width: 824px) {
-      .header {
-        padding: 20px;
-        position: relative;
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
       }
 
-      .banner {
-        padding: 50px 0px;
-      }
-
-      .banner-text {
-        margin: auto;
-        padding: 19px;
-      }
-
-      .perks {
-        padding: 40px;
-      }
-
-      .container {
-        display: flex;
-      }
-
-      .mem-text,
-      .more-perks {
-        padding: 50px;
-      }
-
-      .perks-cont,
-      .footer-cont,
-      .container {
-        flex-direction: column;
-      }
-
-      .left-footer {
-        text-align: center;
-      }
-
-      .perks-txt {
-        padding: 2px 20px;
-      }
-
-      .footer-cont {
-        padding: 20px;
-        gap: 1.5rem;
-        text-align: center;
-      }
-
-      .logo {
-        display: none;
-      }
-
-      .info-cont {
-        padding: 5px;
-      }
-
-      .info-cont>h3 {
-        font-size: 1.5rem;
-      }
-
-      .info-cont>p {
-        font-size: 0.8rem;
-      }
-
-
-      .form-residence {
-        gap: 1.5rem;
-        flex-direction: column;
-      }
-
-      .left-form {
-        border-right: 0;
-      }
-
-      .overlay-form {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .form-body,
-      .form-name-inputs {
-        flex-direction: column;
-      }
-
-      .membership-form {
-        width: 100%;
-        left: 0;
-        height: 100%;
-      }
-
-      .left-footer {
-        text-align: center;
-      }
-
-      .form-inner {
-        height: 100%;
-        overflow-y: scroll;
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        font-family: "Lemon/Milk", sans-serif;
+        font-family: "Lemon/Milk light", sans-serif;
         overflow-x: hidden;
       }
 
-
-      .form-body {
-        flex-direction: column;
-
-      }
-
-    }
-
-
-    #sidebar {
-      position: absolute;
-      right: -300px;
-      height: 100vh;
-      top: 80px;
-      background: rgba(0, 0, 0, 0.7);
-      width: 200px;
-      white-space: nowrap;
-    }
-
-    .open {
-      transform: translateX(-300px);
-      transition: all 0.7s ease-in-out;
-    }
-
-    .side-menu-links {
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-      margin-top: 20px;
-      gap: 1.2rem;
-      border-right-color: white;
-      height: 100%;
-      align-items: flex-end;
-      position: relative;
-    }
-
-    .social-m {
-      list-style: none;
-    }
-
-    .social-m>li>a {
-      text-decoration: none;
-      color: #b38972db;
-      font-size: 1.5rem;
-      display: block;
-    }
-
-    .social-m {
-      display: flex;
-      margin: auto;
-      margin-top: auto;
-      list-style: none;
-      width: 100%;
-      justify-content: space-around;
-      margin-top: 55vh;
-    }
-
-    .side-menu-links>li {
-      padding: 0px 1.4rem 0px 1rem;
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    ul.side-menu-links>li>a {
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 800;
-      cursor: pointer;
-      letter-spacing: 2px;
-      transition: all 120ms ease-in-out;
-      color: #f1c232;
-    }
-
-
-    .side-menu-links>li>a:hover {
-      color: white;
-      transition: all 120ms ease-in-out;
-    }
-
-    .banner {
-      min-height: 65vh;
-      background-repeat: no-repeat;
-      padding-top: 250px;
-      padding-left: 100px;
-      padding-right: 100px;
-      padding-bottom: 50px;
-      height: auto;
-      background-size: cover;
-      background-image: url("https://thequorum.club/wp-content/themes/quorum/new_templates/images/q-app-banner.jpg");
-    }
-
-    .banner-text {
-      margin: 0 140px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .banner-text>h3 {
-      position: relative;
-      letter-spacing: 8px;
-      font-size: 2rem;
-      color: #d7a88d;
-    }
-
-    .banner-text>p {
-      letter-spacing: 0.5px;
-      color: white;
-      font-weight: 100;
-      font-family: "Lato", sans-serif;
-    }
-
-    .banner-text>h3::before {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 2px;
-      top: 20px;
-      left: -122px;
-      background: #c4967d;
-    }
-
-
-    .mem-cont {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .mem-cont>h3::before {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 2px;
-      top: 25px;
-      left: -122px;
-      background: #c5987e;
-    }
-
-    .mem-cont>h3 {
-      color: #c5987e;
-      position: relative;
-      font-size: 3rem;
-      letter-spacing: 1.5px;
-    }
-
-    .mem-cont>p {
-      font-size: 2em;
-    }
-
-    .mem-text {
-      padding: 50px 200px;
-      position: relative;
-      height: 100vh;
-      width: 100%;
-    }
-
-    .app-pres {
-      position: absolute;
-      width: 80%;
-      height: 80%;
-      background-color: black;
-      left: 0;
-      right: 0;
-      margin: auto;
-      background-image: url('https://thequorum.club/wp-content/themes/quorum/new_templates/images/q-app-image.jpg');
-      background-position: center center;
-    }
-
-    .app-store {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      padding: 35px 80px;
-      width: 100%;
-      display: flex;
-      height: 10rem;
-      gap: 20px;
-    }
-
-    .apple-badge:hover,
-    .google-badge:hover {
-      transform: scale(1.1);
-    }
-
-    .apple-badge {
-      background-image: url('https://seeklogo.com/images/D/download-on-the-app-store-flat-badge-logo-4582694404-seeklogo.com.png');
-    }
-
-    .google-badge {
-      background-image: url('https://seeklogo.com/images/G/get-it-on-google-play-badge-logo-8CDE582776-seeklogo.com.png');
-    }
-
-    .apple-badge,
-    .google-badge {
-      width: 140px;
-      background-position: center;
-      background-repeat: no-repeat;
-      cursor: pointer;
-      background-size: contain;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .app-link {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .app-ban-head {
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 25px 100px;
-      display: flex;
-      flex-direction: column;
-      background: #000000bd;
-      gap: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
-
-    .app-ban-head>span:nth-child(1) {
-      font-size: 1.8rem;
-      letter-spacing: 5px;
-      color: white;
-      font-weight: 800;
-      position: relative;
-    }
-
-    .app-ban-head>span:nth-child(1)::before {
-      content: '';
-      position: absolute;
-      width: 5px;
-      height: 66px;
-      top: 3px;
-      left: -20px;
-      background-image: linear-gradient(to right, #e8b497, #bc9078);
-    }
-
-    .app-ban-head>span:nth-child(2) {
-      font-size: 1.2rem;
-      letter-spacing: 1.1px;
-      color: white;
-      font-style: italic;
-    }
-
-
-    .footer {
-      background: white;
-      color: #301616;
-    }
-
-    .footer-cont {
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand-footer>a {
-      text-decoration: none;
-    }
-
-    .left-footer {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: .8em;
-      letter-spacing: 1px;
-      text-align: right;
-    }
-
-    .membership {
-      background-image: linear-gradient(to right, #301616, #4e2019);
-      padding: 2rem 4rem;
-    }
-
-    .memberForm {
-      text-align: center;
-      text-decoration: none;
-      color: #b98e35;
-    }
-
-    .reqbtn {
-      background-color: black;
-      width: fit-content;
-      margin: auto;
-      padding: 7px 18px;
-      border-radius: 18px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .membership-info {
-      position: absolute;
-      background-image: linear-gradient(to right,
-          rgba(234, 182, 154, 0.95),
-          rgba(182, 139, 115, 0.95));
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-      display: none;
-      animation: fade-in 300ms ease-in 0ms 1 normal forwards;
-    }
-
-    .close-info>svg {
-      width: 35px;
-      fill: white;
-      right: 25px;
-      position: absolute;
-      top: 25px;
-      cursor: pointer;
-    }
-
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    .submit-btn {
-      height: 35px;
-      width: 250px;
-      background: #017481;
-      background-image: linear-gradient(to right, #eab69a, #b48972);
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50px;
-      cursor: pointer;
-      letter-spacing: 5px;
-    }
-
-    .fade-out-cl {
-      animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
-    }
-
-
-    /*Mobile Query*/
-    @media only screen and (max-width: 824px) {
-      .header {
-        padding: 20px;
-        position: relative;
-      }
-
-      .app-ban-head {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+      .main-wrp {
         width: 100%;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
       }
 
-      .banner {
-        padding: 50px 0px;
+      .brand-name>a>h1,
+      .brand-footer>a>h1 {
+        color: #b98e35;
+        font-size: 2rem;
+        text-shadow: 1px 1px 2px #1c1c1c;
+        letter-spacing: 2.5px;
       }
 
-      .banner-text {
-        margin: auto;
-        padding: 19px;
+      .brand-name>a {
+        text-decoration: none;
       }
 
-      .container {
+      .brand-name,
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo>img {
+        fill: white;
+        max-width: 70%;
+      }
+
+      .header {
+        display: flex;
+        padding: 7px 20px;
+        background: #301616;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+      }
+
+      .hamb-men {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding-left: 8px;
+      }
+
+      /* add custom css */
+      .pillars-font {
+        font-family: 'Times New Roman', Times, serif;
+      }
+
+      .header-content {
         display: flex;
       }
 
-      .app-pres {
+      /* add for applying membership */
+      .overlay-form {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-
+        height: 100%;
+        background-color: #0000007f;
+        display: none;
+        animation: fade-in 600ms ease-in 0ms 1 normal forwards;
+        z-index: 5;
       }
 
-      .perks-cont,
-      .footer-cont,
-      .container {
+      .membership-form {
+        border-style: solid;
+        border-color: white;
+        border-width: 10px;
+        width: 60%;
+        height: fit-content;
+        position: absolute;
+        z-index: 4;
+        left: 20%;
+        right: 0;
+        top: 3.5%;
+        animation: fade-in 500ms ease-in 0ms 1 normal forwards;
+      }
+
+      .close-btn1 {
+        content: "X";
+        top: -15px;
+        right: -15px;
+        color: white;
+        background-color: #000000;
+        width: 35px;
+        height: 30px;
+        border-radius: 10px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: white;
+        border-width: 1.5px;
+        border-style: solid;
+        cursor: pointer;
+      }
+
+      .form-inner {
+        background-color: #414042;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1.8rem;
+        padding-bottom: 3rem;
+      }
+
+      .form-head {
+        flex-grow: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.7rem;
+        letter-spacing: 3px;
+      }
+
+      .form-body {
+        flex-grow: 1;
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .right-form,
+      .left-form,
+      .user-info {
+        display: flex;
         flex-direction: column;
       }
 
-      .left-footer {
+      .right-form {
+        gap: 1.6rem;
+      }
+
+      .left-form {
+        border-right: 1px white solid;
+        padding-right: 15px;
+      }
+
+      .user-info {
+        gap: 1.5rem;
+      }
+
+      .form-name-inputs {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .form-text-inputs-all,
+      .form-text-inputs {
+        background: none;
+        border-top: none;
+        border-left: 0;
+        border-right: 0;
+        padding: 0px 5px 10px;
+        border-color: #c4967d;
+        border-width: 1px;
+        letter-spacing: 0.5px;
+      }
+
+      .form-lbl,
+      .form-head,
+      .form-text-inputs-all,
+      .form-text-inputs {
+        color: #c4967d;
+      }
+
+      .res-left,
+      .res-right {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-residence {
+        display: flex;
+        gap: 1rem;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+      }
+
+      #select-media,
+      #select-hear {
+        background: #474648;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        font-weight: 600;
+        font-size: large;
+        color: #c4967d;
+        border-color: #c4967d;
+        padding: 6px 5px 8px;
+        text-transform: uppercase;
+      }
+
+      #no-reference {
+        color: #c4967d;
+        letter-spacing: 0.5px;
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .more-info,
+      .form-hear {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .more-info>label,
+      .form-hear>label {
+        font-size: smaller;
+      }
+
+      #more-info-txt {
+        background: none;
+        border-color: #c4967d;
+        border-style: solid;
+        resize: none;
+        color: #c4967d;
+        padding: 0.2rem;
+      }
+
+
+      .form-footer {
+        width: 100%;
+      }
+
+      .submit-btn {
+        height: 35px;
+        width: 250px;
+        background: #017481;
+        background-image: linear-gradient(to right, #eab69a, #b48972);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        cursor: pointer;
+        letter-spacing: 5px;
+      }
+
+      .fade-out-cl {
+        animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
+      }
+
+      .thanks {
+        width: 50vw;
+        height: 100%;
         text-align: center;
+        font-size: 3.5rem;
+        color: white;
+        background-image: linear-gradient(to right, #eab69a, #b48972);
+        font-weight: 600;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        animation: fade-in 2000ms ease-in 0ms 1 normal forwards;
+      }
+
+      @media only screen and (max-width: 824px) {
+        .header {
+          padding: 20px;
+          position: relative;
+        }
+
+        .banner {
+          padding: 50px 0px;
+        }
+
+        .banner-text {
+          margin: auto;
+          padding: 19px;
+        }
+
+        .perks {
+          padding: 40px;
+        }
+
+        .container {
+          display: flex;
+        }
+
+        .mem-text,
+        .more-perks {
+          padding: 50px;
+        }
+
+        .perks-cont,
+        .footer-cont,
+        .container {
+          flex-direction: column;
+        }
+
+        .left-footer {
+          text-align: center;
+        }
+
+        .perks-txt {
+          padding: 2px 20px;
+        }
+
+        .footer-cont {
+          padding: 20px;
+          gap: 1.5rem;
+          text-align: center;
+        }
+
+        .logo {
+          display: none;
+        }
+
+        .info-cont {
+          padding: 5px;
+        }
+
+        .info-cont>h3 {
+          font-size: 1.5rem;
+        }
+
+        .info-cont>p {
+          font-size: 0.8rem;
+        }
+
+
+        .form-residence {
+          gap: 1.5rem;
+          flex-direction: column;
+        }
+
+        .left-form {
+          border-right: 0;
+        }
+
+        .overlay-form {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .form-body,
+        .form-name-inputs {
+          flex-direction: column;
+        }
+
+        .membership-form {
+          width: 100%;
+          left: 0;
+          height: 100%;
+        }
+
+        .left-footer {
+          text-align: center;
+        }
+
+        .form-inner {
+          height: 100%;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+
+
+        .form-body {
+          flex-direction: column;
+
+        }
+
+      }
+
+
+      #sidebar {
+        position: absolute;
+        right: -300px;
+        height: 100vh;
+        top: 80px;
+        background: rgba(0, 0, 0, 0.7);
+        width: 200px;
+        white-space: nowrap;
+      }
+
+      .open {
+        transform: translateX(-300px);
+        transition: all 0.7s ease-in-out;
+      }
+
+      .side-menu-links {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin-top: 20px;
+        gap: 1.2rem;
+        border-right-color: white;
+        height: 100%;
+        align-items: flex-end;
+        position: relative;
+      }
+
+      .social-m {
+        list-style: none;
+      }
+
+      .social-m>li>a {
+        text-decoration: none;
+        color: #b38972db;
+        font-size: 1.5rem;
+        display: block;
+      }
+
+      .social-m {
+        display: flex;
+        margin: auto;
+        margin-top: auto;
+        list-style: none;
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 55vh;
+      }
+
+      .side-menu-links>li {
+        padding: 0px 1.4rem 0px 1rem;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      ul.side-menu-links>li>a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 800;
+        cursor: pointer;
+        letter-spacing: 2px;
+        transition: all 120ms ease-in-out;
+        color: #f1c232;
+      }
+
+
+      .side-menu-links>li>a:hover {
+        color: white;
+        transition: all 120ms ease-in-out;
+      }
+
+      .banner {
+        min-height: 65vh;
+        background-repeat: no-repeat;
+        padding-top: 250px;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 50px;
+        height: auto;
+        background-size: cover;
+        background-image: url("https://thequorum.club/wp-content/themes/quorum/new_templates/images/q-app-banner.jpg");
+      }
+
+      .banner-text {
+        margin: 0 140px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .banner-text>h3 {
+        position: relative;
+        letter-spacing: 8px;
+        font-size: 2rem;
+        color: #d7a88d;
+      }
+
+      .banner-text>p {
+        letter-spacing: 0.5px;
+        color: white;
+        font-weight: 100;
+        font-family: "Lato", sans-serif;
+      }
+
+      .banner-text>h3::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 2px;
+        top: 20px;
+        left: -122px;
+        background: #c4967d;
+      }
+
+
+      .mem-cont {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .mem-cont>h3::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 2px;
+        top: 25px;
+        left: -122px;
+        background: #c5987e;
+      }
+
+      .mem-cont>h3 {
+        color: #c5987e;
+        position: relative;
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+      }
+
+      .mem-cont>p {
+        font-size: 2em;
+      }
+
+      .mem-text {
+        padding: 50px 200px;
+        position: relative;
+        height: 100vh;
+        width: 100%;
+      }
+
+      .app-pres {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        background-color: black;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-image: url('https://thequorum.club/wp-content/themes/quorum/new_templates/images/q-app-image.jpg');
+        background-position: center center;
+      }
+
+      .app-store {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 35px 80px;
+        width: 100%;
+        display: flex;
+        height: 10rem;
+        gap: 20px;
+      }
+
+      .apple-badge:hover,
+      .google-badge:hover {
+        transform: scale(1.1);
+      }
+
+      .apple-badge {
+        background-image: url('https://seeklogo.com/images/D/download-on-the-app-store-flat-badge-logo-4582694404-seeklogo.com.png');
+      }
+
+      .google-badge {
+        background-image: url('https://seeklogo.com/images/G/get-it-on-google-play-badge-logo-8CDE582776-seeklogo.com.png');
+      }
+
+      .apple-badge,
+      .google-badge {
+        width: 140px;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        background-size: contain;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .app-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .app-ban-head {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 25px 100px;
+        display: flex;
+        flex-direction: column;
+        background: #000000bd;
+        gap: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      .app-ban-head>span:nth-child(1) {
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+        color: white;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .app-ban-head>span:nth-child(1)::before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 66px;
+        top: 3px;
+        left: -20px;
+        background-image: linear-gradient(to right, #e8b497, #bc9078);
+      }
+
+      .app-ban-head>span:nth-child(2) {
+        font-size: 1.2rem;
+        letter-spacing: 1.1px;
+        color: white;
+        font-style: italic;
+      }
+
+
+      .footer {
+        background: white;
+        color: #301616;
       }
 
       .footer-cont {
-        padding: 20px;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand-footer>a {
+        text-decoration: none;
+      }
+
+      .left-footer {
+        display: flex;
+        flex-direction: column;
         gap: 1.5rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: .8em;
+        letter-spacing: 1px;
+        text-align: right;
+      }
+
+      .membership {
+        background-image: linear-gradient(to right, #301616, #4e2019);
+        padding: 2rem 4rem;
+      }
+
+      .memberForm {
         text-align: center;
+        text-decoration: none;
+        color: #b98e35;
       }
 
-      .logo {
+      .reqbtn {
+        background-color: black;
+        width: fit-content;
+        margin: auto;
+        padding: 7px 18px;
+        border-radius: 18px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .membership-info {
+        position: absolute;
+        background-image: linear-gradient(to right,
+            rgba(234, 182, 154, 0.95),
+            rgba(182, 139, 115, 0.95));
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        align-items: center;
         display: none;
+        animation: fade-in 300ms ease-in 0ms 1 normal forwards;
       }
 
-    }
+      .close-info>svg {
+        width: 35px;
+        fill: white;
+        right: 25px;
+        position: absolute;
+        top: 25px;
+        cursor: pointer;
+      }
 
-    .social-m>li>a {
-      text-decoration: none;
-      color: #b38972db;
-      padding: 4px;
-      font-size: 1.5rem;
-      position: absolute;
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
 
-    }
-  </style>
-</head>
+        100% {
+          opacity: 1;
+        }
+      }
 
-<body>
-  <div class="main-wrp">
-    <div class="overlay-form">
-      <div class="membership-form">
-        <div class="close-btn1" onclick="closeForm()">
-          X
-        </div>
-        <div class="form-inner">
-          <div class="form-head">
-            <span>Membership Enquiry</span>
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .submit-btn {
+        height: 35px;
+        width: 250px;
+        background: #017481;
+        background-image: linear-gradient(to right, #eab69a, #b48972);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        cursor: pointer;
+        letter-spacing: 5px;
+      }
+
+      .fade-out-cl {
+        animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
+      }
+
+
+      /*Mobile Query*/
+      @media only screen and (max-width: 824px) {
+        .header {
+          padding: 20px;
+          position: relative;
+        }
+
+        .app-ban-head {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          width: 100%;
+        }
+
+        .banner {
+          padding: 50px 0px;
+        }
+
+        .banner-text {
+          margin: auto;
+          padding: 19px;
+        }
+
+        .container {
+          display: flex;
+        }
+
+        .app-pres {
+          width: 100%;
+
+        }
+
+        .perks-cont,
+        .footer-cont,
+        .container {
+          flex-direction: column;
+        }
+
+        .left-footer {
+          text-align: center;
+        }
+
+        .footer-cont {
+          padding: 20px;
+          gap: 1.5rem;
+          text-align: center;
+        }
+
+        .logo {
+          display: none;
+        }
+
+      }
+
+      .social-m>li>a {
+        text-decoration: none;
+        color: #b38972db;
+        padding: 4px;
+        font-size: 1.5rem;
+        position: absolute;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-wrp">
+      <div class="overlay-form">
+        <div class="membership-form">
+          <div class="close-btn1" onclick="closeForm()">
+            X
           </div>
-          <div class="form-body">
-            <div class="left-form">
-              <div class="user-info">
-                <label for="user-info" class="form-lbl">TELL US A LITTLE BIT ABOUT YOURSELF</label>
-                <div class="form-name-inputs">
-                  <input class="form-text-inputs" placeholder="FIRST NAME" type="text" id="first-name" />
-                  <input class="form-text-inputs" placeholder="SURNAME" type="text" id="surname" />
-                </div>
-                <input class="form-text-inputs-all" placeholder="AGE" type="text" id="age" />
-                <input class="form-text-inputs-all" placeholder="EMAIL" type="text" id="email" />
-                <input class="form-text-inputs-all" placeholder="PHONE NUMBER" type="text" id="phone" />
-                <input class="form-text-inputs-all" placeholder="INDUSTRY" type="text" id="industry" />
-                <input class="form-text-inputs-all" placeholder="COMPANY" type="text" id="company" />
-                <div class="form-residence">
-                  <div class="res-left">
-                    <label for="res-left" class="form-lbl">WHERE DO YOU LIVE</label>
-                    <input class="form-text-inputs-all" placeholder="CITY" type="text" id="live-city" />
+          <div class="form-inner">
+            <div class="form-head">
+              <span>Membership Enquiry</span>
+            </div>
+            <div class="form-body">
+              <div class="left-form">
+                <div class="user-info">
+                  <label for="user-info" class="form-lbl">TELL US A LITTLE BIT ABOUT YOURSELF</label>
+                  <div class="form-name-inputs">
+                    <input class="form-text-inputs" placeholder="FIRST NAME" type="text" id="first-name" />
+                    <input class="form-text-inputs" placeholder="SURNAME" type="text" id="surname" />
                   </div>
-                  <div class="res-right">
-                    <label for="res-right" class="form-lbl">PLACE OF WORK</label>
-                    <input class="form-text-inputs-all" placeholder="CITY" type="text" id="work-city" />
+                  <input class="form-text-inputs-all" placeholder="AGE" type="text" id="age" />
+                  <input class="form-text-inputs-all" placeholder="EMAIL" type="text" id="email" />
+                  <input class="form-text-inputs-all" placeholder="PHONE NUMBER" type="text" id="phone" />
+                  <input class="form-text-inputs-all" placeholder="INDUSTRY" type="text" id="industry" />
+                  <input class="form-text-inputs-all" placeholder="COMPANY" type="text" id="company" />
+                  <div class="form-residence">
+                    <div class="res-left">
+                      <label for="res-left" class="form-lbl">WHERE DO YOU LIVE</label>
+                      <input class="form-text-inputs-all" placeholder="CITY" type="text" id="live-city" />
+                    </div>
+                    <div class="res-right">
+                      <label for="res-right" class="form-lbl">PLACE OF WORK</label>
+                      <input class="form-text-inputs-all" placeholder="CITY" type="text" id="work-city" />
+                    </div>
                   </div>
-                </div>
 
+                </div>
+              </div>
+              <div class="right-form">
+                <label class="form-lbl">PLEASE PROVIDE REFERENCE OF ATLEAST ONE QUORUM MEMBER</label>
+                <input class="form-text-inputs-all" placeholder="REFERENCE 1" type="text" id="reference-1" />
+                <input class="form-text-inputs-all" placeholder="REFERENCE 2" type="text" id="reference-2" />
+                <label id="no-reference"><input type="checkbox" id="did-not-had-ref" />I don’t know
+                  any member</label>
+                <div class="more-info">
+                  <label for="more-info" class="form-lbl">Something we should know about you</label>
+                  <textarea id="more-info-txt" cols="10" rows="5"></textarea>
+                </div>
               </div>
             </div>
-            <div class="right-form">
-              <label class="form-lbl">PLEASE PROVIDE REFERENCE OF ATLEAST ONE QUORUM MEMBER</label>
-              <input class="form-text-inputs-all" placeholder="REFERENCE 1" type="text" id="reference-1" />
-              <input class="form-text-inputs-all" placeholder="REFERENCE 2" type="text" id="reference-2" />
-              <label id="no-reference"><input type="checkbox" id="did-not-had-ref" />I don’t know
-                any member</label>
-              <div class="more-info">
-                <label for="more-info" class="form-lbl">Something we should know about you</label>
-                <textarea id="more-info-txt" cols="10" rows="5"></textarea>
-              </div>
+            <div class="form-footer">
+              <div class="submit-btn" onclick="sendApplication()">Submit</div>
             </div>
-          </div>
-          <div class="form-footer">
-            <div class="submit-btn" onclick="sendApplication()">Submit</div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="header">
-      <div class="logo">
-        <a href="/index.html">
-          <img src="img/logos/ws.png" style="width:64px;" class="icon">
-        </a>
-      </div>
-      <div class="header-content">
-        <div class="brand-name">
-          <a href="#">
-            <h1>HYDERABAD CRICKET CLUB</h1>
+      <div class="header">
+        <div class="logo">
+          <a href="/index.html">
+            <img src="img/logos/ws.png" style="width:64px;" class="icon">
           </a>
         </div>
-        <div class="hamb-men">
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" width="40.75px" height="32.5px" viewBox="0 0 40.75 32.5"
-            enable-background="new 0 0 40.75 32.5" xml:space="preserve">
-            <g>
-              <rect x="6.407" y="7.774" fill="#FFFFFF" width="27.061" height="1.792" />
-              <rect x="6.407" y="16.199" fill="#FFFFFF" width="27.061" height="1.793" />
-              <rect x="6.407" y="24.625" fill="#FFFFFF" width="27.061" height="1.793" />
-            </g>
-          </svg>
+        <div class="header-content">
+          <div class="brand-name">
+            <a href="#">
+              <h1>HYDERABAD CRICKET CLUB</h1>
+            </a>
+          </div>
+          <div class="hamb-men">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px" y="0px" width="40.75px" height="32.5px" viewBox="0 0 40.75 32.5"
+              enable-background="new 0 0 40.75 32.5" xml:space="preserve">
+              <g>
+                <rect x="6.407" y="7.774" fill="#FFFFFF" width="27.061" height="1.792" />
+                <rect x="6.407" y="16.199" fill="#FFFFFF" width="27.061" height="1.793" />
+                <rect x="6.407" y="24.625" fill="#FFFFFF" width="27.061" height="1.793" />
+              </g>
+            </svg>
+          </div>
         </div>
-      </div>
-      <nav id="sidebar">
-        <ul class="side-menu-links">
-          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/about.html">About US</a></li>
-          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/benefits.html">Benefits</a></li>
-          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/gallery.html">Gallery</a></li>
-          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/app.html">App</a></li>
-          <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/contact.html">Contact US</a></li>
-          <ul class="social-m">
-            <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+        <nav id="sidebar">
+          <ul class="side-menu-links">
+            <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/about.html">About US</a></li>
+            <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/benefits.html">Benefits</a></li>
+            <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/gallery.html">Gallery</a></li>
+            <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/app.html">App</a></li>
+            <li><a href="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/contact.html">Contact US</a></li>
+            <ul class="social-m">
+              <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
           </ul>
-        </ul>
-      </nav>
-    </div>
-
-    <section class="banner">
-      <div class="banner-text">
-        <h3>THE Q APP</h3>
-        <p>
-          Perfectly positioned for the new normal, our app digitizes processes around the club to ensure a seamless and
-          contactless experience for our members & their guests.
-        </p>
-
-        <p>
-          Members can check in, make reservations, invite guests, RSVP to events, dine, pay and stay updated on all
-          things Q using the app.
-        </p>
-
-
+        </nav>
       </div>
-    </section>
 
-    <section class="mem-text">
-      <div class="app-pres">
-        <div class="app-ban-head">
-          <span>Access</span>
-          <span>At your fingertips</span>
+      <section class="banner">
+        <div class="banner-text">
+          <h3>THE Q APP</h3>
+          <p>
+            Perfectly positioned for the new normal, our app digitizes processes around the club to ensure a seamless and
+            contactless experience for our members & their guests.
+          </p>
+
+          <p>
+            Members can check in, make reservations, invite guests, RSVP to events, dine, pay and stay updated on all
+            things Q using the app.
+          </p>
+
+
         </div>
-        <div class="app-store">
-          <div class="apple-badge">
-            <a href="somewhere" class="app-link"></a>
+      </section>
+
+      <section class="mem-text">
+        <div class="app-pres">
+          <div class="app-ban-head">
+            <span>Access</span>
+            <span>At your fingertips</span>
           </div>
-          <div class="google-badge">
-            <a href="somewhere" class="app-link"></a>
+          <div class="app-store">
+            <div class="apple-badge">
+              <a href="somewhere" class="app-link"></a>
+            </div>
+            <div class="google-badge">
+              <a href="somewhere" class="app-link"></a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="membership">
-      <div class="reqbtn" onclick="membershipFormOpen()">
-        <a class="memberForm">
-          <div class="request">Appy For MEMBERSHIP</div>
-        </a>
-      </div>
-    </section>
-    <div class="footer">
-      <div class="footer-cont">
-        <div class="brand-footer">
-          <a href="#">
-            <img src="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/img/logos/hcc-logo-nobg.png"
-              style="width:70px;" class="icon">
+      </section>
+      <section class="membership">
+        <div class="reqbtn" onclick="membershipFormOpen()">
+          <a class="memberForm">
+            <div class="request">Appy For MEMBERSHIP</div>
           </a>
         </div>
-        <div class="left-footer">
-          <p>
-            Headquarters: 3rd Floor, Vamsiram Jyothi Celeste, CBI Colony,
-            <br />
-            Kavuri Hills, Jubilee Hills, Hyderabad - 500033.
-          </p>
-          <span>Hyderabad Cricket Club © 2022. A Venture of Wattey Shot Pvt Ltd. All Rights Reserved.</span>
+      </section>
+      <div class="footer">
+        <div class="footer-cont">
+          <div class="brand-footer">
+            <a href="#">
+              <img src="/Users/nikhilanjuri/Downloads/WatteyShot/Website/hcc/img/logos/hcc-logo-nobg.png"
+                style="width:70px;" class="icon">
+            </a>
+          </div>
+          <div class="left-footer">
+            <p>
+              Headquarters: 3rd Floor, Vamsiram Jyothi Celeste, CBI Colony,
+              <br />
+              Kavuri Hills, Jubilee Hills, Hyderabad - 500033.
+            </p>
+            <span>Hyderabad Cricket Club © 2022. A Venture of Wattey Shot Pvt Ltd. All Rights Reserved.</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script>
+    <script>
 
-    document.querySelectorAll(".close-info").forEach((el) => {
-      el.addEventListener("click", () => {
-        el.parentElement.style.display = "none";
-      });
-    });
-
-    let menBtn = document.querySelector('.hamb-men');
-
-    menBtn.addEventListener('click', () => {
-      let sideBar = document.getElementById('sidebar')
-      if (!document.querySelector('.open')) {
-        sideBar.classList.add('open');
-      } else {
-        sideBar.style.transform = 'translate(300px,0)'
-        setTimeout(() => {
-          sideBar.style.transform = '';
-          sideBar.classList.remove('open');
-
-        }, 700)
-
-      }
-    })
-
-    const stanMem = document.getElementById("mem-standard");
-    const expMem = document.getElementById("mem-expatriate");
-    const un35Mem = document.getElementById("mem-under-35");
-    const un30Mem = document.getElementById("mem-under-30");
-    const ncrMem = document.getElementById("mem-non-ncr");
-    const corpMem = document.getElementById("mem-corporate");
-
-    const openModal = (modal) => {
-      switch (modal) {
-        case "stand":
-          stanMem.style.display = "flex";
-          break;
-        case "exp":
-          expMem.style.display = "flex";
-          break;
-        case "un35":
-          un35Mem.style.display = "flex";
-          break;
-        case "un30":
-          un30Mem.style.display = "flex";
-          break;
-        case "ncr":
-          ncrMem.style.display = "flex";
-          break;
-        case "corp":
-          corpMem.style.display = "flex";
-          break;
-      }
-    };
-
-    document.querySelectorAll(".close-info").forEach((el) => {
-      el.addEventListener("click", () => {
-        el.parentElement.style.display = "none";
-      });
-    });
-
-    const membershipFormOpen = () => {
-      let bodyScroll = document.querySelector("body");
-      let overflowEl = document.querySelector(".overlay-form");
-      overflowEl.style.display = "block";
-      bodyScroll.style.position = "relative";
-    };
-
-    document.querySelector(".close-btn1").addEventListener("click", () => {
-      let formEl = document.querySelector(".membership-form");
-      formEl.classList.add("fade-out-cl");
-      document.querySelector("body").style.position = "relative";
-      setTimeout(function () {
-        formEl.classList.remove("fade-out-cl");
-        formEl.parentElement.style.display = "none";
-      }, 800);
-    });
-
-    const closeForm = () => { };
-
-    const sendApplication = () => {
-      let jsonObj = JSON.stringify({
-        firstName: document.getElementById("first-name").value,
-        surName: document.getElementById("surname").value,
-        age: document.getElementById("age").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        industry: document.getElementById("industry").value,
-        company: document.getElementById("company").value,
-        residence: document.getElementById("live-city").value,
-        workCity: document.getElementById("work-city").value,
-        ref1: document.getElementById("reference-1").value,
-        ref2: document.getElementById("reference-2").value,
-        noRef: document.getElementById("did-not-had-ref").checked,
-        moreInfo: document.getElementById("more-info-txt").value,
+      document.querySelectorAll(".close-info").forEach((el) => {
+        el.addEventListener("click", () => {
+          el.parentElement.style.display = "none";
+        });
       });
 
-      let handlerScript = "http://domain.com/mailscript.php";
-      let reqOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: jsonObj,
+      let menBtn = document.querySelector('.hamb-men');
+
+      menBtn.addEventListener('click', () => {
+        let sideBar = document.getElementById('sidebar')
+        if (!document.querySelector('.open')) {
+          sideBar.classList.add('open');
+        } else {
+          sideBar.style.transform = 'translate(300px,0)'
+          setTimeout(() => {
+            sideBar.style.transform = '';
+            sideBar.classList.remove('open');
+
+          }, 700)
+
+        }
+      })
+
+      const stanMem = document.getElementById("mem-standard");
+      const expMem = document.getElementById("mem-expatriate");
+      const un35Mem = document.getElementById("mem-under-35");
+      const un30Mem = document.getElementById("mem-under-30");
+      const ncrMem = document.getElementById("mem-non-ncr");
+      const corpMem = document.getElementById("mem-corporate");
+
+      const openModal = (modal) => {
+        switch (modal) {
+          case "stand":
+            stanMem.style.display = "flex";
+            break;
+          case "exp":
+            expMem.style.display = "flex";
+            break;
+          case "un35":
+            un35Mem.style.display = "flex";
+            break;
+          case "un30":
+            un30Mem.style.display = "flex";
+            break;
+          case "ncr":
+            ncrMem.style.display = "flex";
+            break;
+          case "corp":
+            corpMem.style.display = "flex";
+            break;
+        }
       };
-      const sendD = async (url, opts) => {
-        let resPo = await fetch(url, opts);
+
+      document.querySelectorAll(".close-info").forEach((el) => {
+        el.addEventListener("click", () => {
+          el.parentElement.style.display = "none";
+        });
+      });
+
+      const membershipFormOpen = () => {
+        let bodyScroll = document.querySelector("body");
+        let overflowEl = document.querySelector(".overlay-form");
+        overflowEl.style.display = "block";
+        bodyScroll.style.position = "relative";
       };
-      sendD(handlerScript, reqOptions);
 
-      let thankMem = document.createElement("div");
-      let form = document.querySelector(".membership-form");
-      thankMem.innerHTML =
-        "Thank you for sending your membership application.";
-      thankMem.style.zIndex = "3";
-      thankMem.classList.add("thanks");
-      form.appendChild(thankMem);
-
-      setTimeout(function () {
-        form.classList.add("fade-out-cl");
+      document.querySelector(".close-btn1").addEventListener("click", () => {
+        let formEl = document.querySelector(".membership-form");
+        formEl.classList.add("fade-out-cl");
         document.querySelector("body").style.position = "relative";
-        form.classList.remove("fade-out-cl");
-        thankMem.classList.remove("thanks");
-        form.parentElement.style.display = "none";
-      }, 2800);
-    };
-  </script>
-</body>
+        setTimeout(function () {
+          formEl.classList.remove("fade-out-cl");
+          formEl.parentElement.style.display = "none";
+        }, 800);
+      });
 
-</html>
+      const closeForm = () => { };
+
+      const sendApplication = () => {
+        let jsonObj = JSON.stringify({
+          firstName: document.getElementById("first-name").value,
+          surName: document.getElementById("surname").value,
+          age: document.getElementById("age").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          industry: document.getElementById("industry").value,
+          company: document.getElementById("company").value,
+          residence: document.getElementById("live-city").value,
+          workCity: document.getElementById("work-city").value,
+          ref1: document.getElementById("reference-1").value,
+          ref2: document.getElementById("reference-2").value,
+          noRef: document.getElementById("did-not-had-ref").checked,
+          moreInfo: document.getElementById("more-info-txt").value,
+        });
+
+        let handlerScript = "http://domain.com/mailscript.php";
+        let reqOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: jsonObj,
+        };
+        const sendD = async (url, opts) => {
+          let resPo = await fetch(url, opts);
+        };
+        sendD(handlerScript, reqOptions);
+
+        let thankMem = document.createElement("div");
+        let form = document.querySelector(".membership-form");
+        thankMem.innerHTML =
+          "Thank you for sending your membership application.";
+        thankMem.style.zIndex = "3";
+        thankMem.classList.add("thanks");
+        form.appendChild(thankMem);
+
+        setTimeout(function () {
+          form.classList.add("fade-out-cl");
+          document.querySelector("body").style.position = "relative";
+          form.classList.remove("fade-out-cl");
+          thankMem.classList.remove("thanks");
+          form.parentElement.style.display = "none";
+        }, 2800);
+      };
+    </script>
+  </body>
+
+  </html>
